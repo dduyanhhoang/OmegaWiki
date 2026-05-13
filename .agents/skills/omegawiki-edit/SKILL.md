@@ -1,6 +1,6 @@
 ---
 name: omegawiki-edit
-description: Add or remove raw sources, or update wiki content, per user request
+description: "Add or remove raw sources, or update wiki content, per user request"
 argument-hint: "[request]"
 ---
 

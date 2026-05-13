@@ -9,6 +9,7 @@ Codex authentication is handled by the Codex CLI or app and is not stored in thi
 
 The repo-local Codex defaults live in `.codex/config.toml`, created from `config/codex.config.toml.example` by `setup-codex.sh`.
 Repository skills live in `.agents/skills` and are loaded by Codex when you launch it from this repository or a subdirectory.
+The `llm-review` MCP server uses `.venv/bin/python`, so run `setup-codex.sh` before starting Codex.
 
 ## Keys
 

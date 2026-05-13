@@ -1,6 +1,6 @@
 ---
 name: omegawiki-init
-description: Bootstrap ΩmegaWiki from user sources plus optional discovery, then ingest the final paper set in parallel
+description: "Bootstrap ΩmegaWiki from user sources plus optional discovery, then ingest the final paper set in parallel"
 argument-hint: "[topic] [--no-introduction]"
 ---
 

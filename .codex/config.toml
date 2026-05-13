@@ -18,7 +18,7 @@ network_access = false
 writable_roots = ["."]
 
 [mcp_servers.llm-review]
-command = "python3"
+command = ".venv/bin/python"
 args = ["mcp-servers/llm-review/server.py"]
 cwd = "."
 startup_timeout_sec = 15

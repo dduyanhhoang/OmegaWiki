@@ -1,7 +1,7 @@
 ---
 name: omegawiki-exp-run
-description: Full experiment execution pipeline — prepare code → deploy → monitor → collect results, supporting three run modes
-argument-hint: <experiment-slug> [--review] [--collect] [--full] [--env local|remote]
+description: "Full experiment execution pipeline — prepare code → deploy → monitor → collect results, supporting three run modes"
+argument-hint: "<experiment-slug> [--review] [--collect] [--full] [--env local|remote]"
 ---
 
 # $omegawiki-exp-run

@@ -106,6 +106,9 @@ fi
 
 info "Installing dependencies into .venv..."
 "$VENV_PYTHON" -m pip install -r requirements.txt -q
+if [ -f "mcp-servers/llm-review/requirements.txt" ]; then
+  "$VENV_PYTHON" -m pip install -r mcp-servers/llm-review/requirements.txt -q
+fi
 ok "Dependencies installed"
 
 echo ""
@@ -162,6 +165,10 @@ replace_skill_refs() {
   perl -pe 's{(?<![\w.~-])/(ask|check|daily-arxiv|discover|edit|exp-design|exp-eval|exp-run|exp-status|ideate|ingest|init|novelty|paper-compile|paper-draft|paper-plan|prefill|rebuttal|refine|research|reset|review|setup|survey|visualize)\b}{\$omegawiki-$1}g'
 }
 
+yaml_double_quote() {
+  sed -e 's/\\/\\\\/g' -e 's/"/\\"/g' -e 's/^/"/' -e 's/$/"/'
+}
+
 rewrite_for_codex() {
   sed \
     -e 's#\.claude/skills#.agents/skills#g' \
@@ -194,13 +201,20 @@ for name in "${SKILL_NAMES[@]}"; do
       {
         echo "---"
         echo "name: omegawiki-$name"
-        desc=$(sed -n 's/^description:[[:space:]]*//p' "$file" | head -n 1)
+        desc=$(sed -n 's/^description:[[:space:]]*//p' "$file" | head -n 1 | rewrite_for_codex)
         if [ -n "$desc" ]; then
-          echo "description: $desc" | rewrite_for_codex
+          printf 'description: '
+          printf '%s' "$desc" | yaml_double_quote
+          echo
         else
           echo "description: Use the OmegaWiki $name workflow in Codex."
         fi
-        sed -n 's/^argument-hint:[[:space:]]*/argument-hint: /p' "$file" | head -n 1
+        hint=$(sed -n 's/^argument-hint:[[:space:]]*//p' "$file" | head -n 1 | sed -e 's/^"//' -e 's/"$//' | rewrite_for_codex)
+        if [ -n "$hint" ]; then
+          printf 'argument-hint: '
+          printf '%s' "$hint" | yaml_double_quote
+          echo
+        fi
         echo "---"
         awk 'BEGIN { frontmatter = 0 } /^---$/ { frontmatter++; next } frontmatter >= 2 { print }' "$file" | rewrite_for_codex
       } > "$out"
@@ -247,6 +261,7 @@ check_tool_import() {
 
 check_python_snippet "PyMuPDF (fitz)" "import fitz"
 check_python_snippet "requests" "import requests"
+check_python_snippet "httpx" "import httpx"
 check_python_snippet "feedparser" "import feedparser"
 check_tool_import "tools/init_discovery.py" "from init_discovery import prepare_inputs"
 check_tool_import "tools/fetch_s2.py" "from fetch_s2 import search"

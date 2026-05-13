@@ -1,6 +1,6 @@
 ---
 name: omegawiki-reset
-description: Reset wiki state to a clean scaffold by scope (wiki / raw / log / checkpoints / all). Useful during development or carefree restarts after a botched setup.
+description: "Reset wiki state to a clean scaffold by scope (wiki / raw / log / checkpoints / all). Useful during development or carefree restarts after a botched setup."
 argument-hint: "--scope wiki|raw|log|checkpoints|all"
 ---
 

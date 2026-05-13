@@ -1,7 +1,7 @@
 ---
 name: omegawiki-paper-draft
-description: Draft a LaTeX paper from PAPER_PLAN — write each section from wiki sources + generate figures/tables + BibTeX verification + de-AI polish
-argument-hint: <paper-plan-path> [--review] [--sections <section-numbers>]
+description: "Draft a LaTeX paper from PAPER_PLAN — write each section from wiki sources + generate figures/tables + BibTeX verification + de-AI polish"
+argument-hint: "<paper-plan-path> [--review] [--sections <section-numbers>]"
 ---
 
 # $omegawiki-paper-draft

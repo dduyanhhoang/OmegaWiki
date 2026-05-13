@@ -1,7 +1,7 @@
 ---
 name: omegawiki-survey
-description: Generate a Related Work section for a paper from wiki knowledge — thematic grouping → narrative structure → LaTeX output, following citation-verification and academic-writing
-argument-hint: <research-question-or-idea-slugs> [--format latex|markdown] [--max-papers 30]
+description: "Generate a Related Work section for a paper from wiki knowledge — thematic grouping → narrative structure → LaTeX output, following citation-verification and academic-writing"
+argument-hint: "<research-question-or-idea-slugs> [--format latex|markdown] [--max-papers 30]"
 ---
 
 # $omegawiki-survey

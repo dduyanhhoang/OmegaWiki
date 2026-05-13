@@ -1,7 +1,7 @@
 ---
 name: omegawiki-refine
-description: General-purpose multi-round iterative improvement — repeatedly calls $omegawiki-review on any research artifact, parses feedback, applies fixes, updates wiki, until the target score is reached
-argument-hint: <artifact-slug-or-path> [--max-rounds N] [--target-score N] [--difficulty standard|hard|adversarial] [--focus method|evidence|writing|completeness]
+description: "General-purpose multi-round iterative improvement — repeatedly calls $omegawiki-review on any research artifact, parses feedback, applies fixes, updates wiki, until the target score is reached"
+argument-hint: "<artifact-slug-or-path> [--max-rounds N] [--target-score N] [--difficulty standard|hard|adversarial] [--focus method|evidence|writing|completeness]"
 ---
 
 # $omegawiki-refine

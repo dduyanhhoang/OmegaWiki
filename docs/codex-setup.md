@@ -38,3 +38,6 @@ Codex uses `AGENTS.md` for project instructions, `.codex/config.toml` for truste
 The generated skill names use the `omegawiki-` prefix so they do not collide with built-in Codex skills or generic user skills. The former slash-command workflows are invoked as `$omegawiki-init`, `$omegawiki-ingest`, and so on.
 
 The setup script does not modify `setup.sh`, `setup.ps1`, `CLAUDE.md`, or `.claude/`.
+
+Run `setup-codex.sh` before launching Codex so `.venv` includes both the
+OmegaWiki tool dependencies and the `llm-review` MCP server dependency set.

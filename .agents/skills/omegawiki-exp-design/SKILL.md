@@ -1,7 +1,7 @@
 ---
 name: omegawiki-exp-design
-description: Idea-driven experiment design — scope an idea's hypothesis → design experiment blocks (baseline / validation / ablation / robustness) → build run order → optional Review LLM review → write to wiki
-argument-hint: <idea-slug-or-hypothesis> [--linked-idea <idea-slug>] [--review] [--budget <gpu-hours>]
+description: "Idea-driven experiment design — scope an idea's hypothesis → design experiment blocks (baseline / validation / ablation / robustness) → build run order → optional Review LLM review → write to wiki"
+argument-hint: "<idea-slug-or-hypothesis> [--linked-idea <idea-slug>] [--review] [--budget <gpu-hours>]"
 ---
 
 # $omegawiki-exp-design
