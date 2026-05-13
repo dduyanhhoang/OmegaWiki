@@ -1,0 +1,32 @@
+# OmegaWiki repo-local Codex defaults.
+#
+# Codex loads this file only after the project is trusted. Keep user secrets and
+# account-wide preferences in ~/.codex/config.toml, not in this checked-in file.
+
+model = "gpt-5.5"
+model_reasoning_effort = "high"
+
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+web_search = "cached"
+
+project_doc_max_bytes = 32000
+project_root_markers = [".git", "AGENTS.md", "pyproject.toml", "requirements.txt"]
+
+[sandbox_workspace_write]
+network_access = false
+writable_roots = ["."]
+
+[mcp_servers.llm-review]
+command = "python3"
+args = ["mcp-servers/llm-review/server.py"]
+cwd = "."
+startup_timeout_sec = 15
+tool_timeout_sec = 120
+env_vars = [
+  "LLM_API_KEY",
+  "LLM_BASE_URL",
+  "LLM_MODEL",
+  "LLM_FALLBACK_MODEL",
+  "OPENAI_API_KEY",
+]
