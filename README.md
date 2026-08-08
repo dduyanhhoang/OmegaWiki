@@ -195,6 +195,33 @@ claude
 # Then type: /init [your-research-topic]
 ```
 
+### Optional: Use Codex Natively
+
+ΩmegaWiki also includes a repo-local Codex setup that preserves the existing
+Claude Code setup. It follows Codex-native conventions: `AGENTS.md` for project
+instructions, `.codex/config.toml` for trusted project config and MCP, and
+`.agents/skills/` for repo-scoped skills.
+
+```bash
+# 1. Install and authenticate Codex
+codex login
+
+# 2. Generate repo-local Codex files
+chmod +x setup-codex.sh && ./setup-codex.sh
+
+# 3. Start Codex from the project root
+codex
+# Then mention skills with $, for example:
+#   $omegawiki-setup
+#   $omegawiki-init [your-research-topic]
+#   $omegawiki-ingest raw/papers/example.pdf
+```
+
+`setup-codex.sh` creates `AGENTS.md`, `.codex/config.toml`, and native
+`$omegawiki-*` skills under `.agents/skills/`. It does not modify `setup.sh`,
+`setup.ps1`, `CLAUDE.md`, or `.claude/`. See
+[`docs/codex-setup.md`](docs/codex-setup.md) for details.
+
 <details>
 <summary><b>Manual setup (Linux / macOS)</b></summary>
 
@@ -348,6 +375,7 @@ All pages use **Obsidian `[[wikilink]]` format** — open `wiki/` in Obsidian fo
 ```
 OmegaWiki/
 ├── CLAUDE.md                    # Runtime schema & rules
+├── AGENTS.md                    # Codex-native project instructions
 ├── wiki/                        # Knowledge base (LLM-maintained)
 │   ├── papers/                  #   Structured paper summaries
 │   ├── concepts/                #   Cross-paper technical concepts
@@ -380,6 +408,8 @@ OmegaWiki/
 │   ├── fetch_wikipedia.py       #   Wikipedia fetcher (used by /prefill)
 │   └── remote.py                #   SSH ops for remote experiments
 ├── .claude/skills/              # 24 Claude Code skill definitions
+├── .agents/skills/              # Codex-native $omegawiki-* skill definitions
+├── .codex/                      # Repo-local Codex config (trusted projects)
 ├── i18n/                        # Bilingual: en/ (canonical) + zh/
 ├── config/                      # Configuration templates
 ├── mcp-servers/                 # Cross-model review server
